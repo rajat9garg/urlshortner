@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: URL Shortener API
+  description: API for shortening URLs
+  version: 1.0.0
+
+servers:
+  - url: /api/v1
+    description: Production server
+
+paths:
+  /urls:
+    post:
+      summary: Create short URL
+      description: Creates a shortened URL from the original URL
+      operationId: createShortUrl
+      tags:
+        - URLs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUrlRequest'
+      responses:
+        '201':
+          description: Short URL created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UrlResponse'
+        '400':
+          description: Invalid input
+        '409':
+          description: Custom alias already exists
+
+components:
+  schemas:
+    CreateUrlRequest:
+      type: object
+      required:
+        - original_url
+      properties:
+        original_url:
+          type: string
+          format: uri
+          example: "https://www.example.com/very/long/url/that/needs/shortening"
+          description: The original URL to be shortened
+        custom_alias:
+          type: string
+          example: "custom"
+          description: Optional custom alias for the shortened URL
+        expires_at:
+          type: string
+          format: date-time
+          example: "2025-06-26T00:00:00Z"
+          description: Optional expiration date and time for the shortened URL
+    UrlResponse:
+      type: object
+      properties:
+        short_url:
+          type: string
+          example: "http://localhost:8080/abc123"
+          description: The shortened URL
+        original_url:
+          type: string
+          example: "https://www.example.com/very/long/url/that/needs/shortening"
+          description: The original URL
+        expires_at:
+          type: string
+          format: date-time
+          example: "2025-06-26T00:00:00Z"
+          description: Expiration date and time for the shortened URL
