@@ -370,3 +370,7 @@ volumes:
 - [System Patterns](./systemPatterns.md)
 - [Project Brief](./projectbrief.md)
 - [Active Context](./activeContext.md)
+
+---
+### 2025-05-26
+- Redis connection now uses explicit password authentication via `RedisConfig.kt`. Date/time issues resolved with UTC serialization. Unit tests updated for all major flows.

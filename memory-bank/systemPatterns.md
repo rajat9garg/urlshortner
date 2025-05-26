@@ -258,3 +258,7 @@ sequenceDiagram
 - [Tech Context](./techContext.md)
 - [Project Brief](./projectbrief.md)
 - [Active Context](./activeContext.md)
+
+---
+### 2025-05-26
+- Redis integration is now explicitly configured for secure access. Date/time serialization is UTC-compliant throughout the stack. All API endpoints follow OpenAPI spec.
