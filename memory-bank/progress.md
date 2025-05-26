@@ -103,6 +103,10 @@
 - Improved URL validation
 - Fixed bug in redirect handling
 - Updated API documentation
+- Created explicit Redis configuration (`RedisConfig.kt`) for password authentication
+- Fixed date/time serialization in `UrlController` to convert `LocalDateTime` to `OffsetDateTime` with UTC
+- Added and fixed unit tests for `UrlServiceImpl`
+- Updated all dependencies and configuration for stable operation
 
 ### 2025-05-25
 - Implemented basic URL shortening
@@ -171,11 +175,3 @@
 - [Active Context](./activeContext.md)
 - [Tech Context](./techContext.md)
 - [Project Brief](./projectbrief.md)
-
----
-### Change Log Entry [2025-05-26]
-- **What**: Completed implementation of URL shortener project with Redis caching, PostgreSQL persistence, OpenAPI-driven controller, robust date/time and authentication handling. Added explicit Redis configuration (`RedisConfig.kt`) for password authentication. Fixed date/time serialization in `UrlController` to convert `LocalDateTime` to `OffsetDateTime` with UTC. Added and fixed unit tests for `UrlServiceImpl`. Updated all dependencies and configuration for stable operation.
-- **Why**: req_id: 517 (Redis NOAUTH error), req_id: 540 (DateTimeParseException), project completion milestone.
-- **Impact**: Project is production-ready. Redis connections are authenticated, date/time handling is standards-compliant, and all major features are tested and stable. All changes are traceable and documented for future reference.
-- **Reference**: commit (pending), decision_id: URL-SHORTENER-COMPLETE, bug_id: 517, bug_id: 540
----

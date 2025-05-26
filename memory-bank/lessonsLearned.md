@@ -71,6 +71,24 @@
 - Clear cache on updates
 **Impact**: Ensured data consistency while maintaining performance
 
+### 4. Redis Authentication Issues
+- **Problem**: Encountered `NOAUTH` errors when connecting to Redis
+- **Root Cause**: Default Redis configuration doesn't handle authentication properly
+- **Solution**: Created explicit `RedisConfig.kt` class to configure Redis connection with password authentication
+- **Lesson**: Always explicitly configure Redis client when authentication is required, don't rely on auto-configuration
+
+### 5. Date/Time Serialization
+- **Problem**: `DateTimeParseException` when processing API responses
+- **Root Cause**: Inconsistent date/time handling between internal representation and API contracts
+- **Solution**: Standardized on UTC timezone and proper conversion between `LocalDateTime` and `OffsetDateTime`
+- **Lesson**: Establish date/time standards early and enforce them consistently across all layers
+
+### 6. Testing Complexity
+- **Problem**: Mocking Redis and database interactions in unit tests was challenging
+- **Root Cause**: Complex dependencies and interactions between components
+- **Solution**: Used MockK for Kotlin-friendly mocking and TestContainers for integration tests
+- **Lesson**: Design for testability from the start, use appropriate testing tools for your tech stack
+
 ## 🔄 Process Improvements
 
 ### 1. Development Workflow

@@ -25,10 +25,18 @@
 
 ### Caching
 - **Primary**: Redis 7.0
+  - **Configuration**:
+    - Explicit authentication via `RedisConfig.kt`
+    - Connection pooling with Lettuce client
+    - Password-based authentication
   - **Use Cases**:
     - URL lookups
     - Rate limiting
     - Session storage
+  - **Implementation Details**:
+    - Custom `RedisConfig` class for explicit connection configuration
+    - Proper error handling for connection issues
+    - TTL-based caching for URL mappings
 
 ### Search (Future)
 - **Technology**: Elasticsearch 8.7

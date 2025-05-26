@@ -1,7 +1,7 @@
 ## Metadata Header
 - **Created:** 2025-05-26
 - **Author:** Rajat Garg
-- **Status:** [DRAFT]
+- **Status:** [COMPLETED]
 - **Last Modified:** 2025-05-26
 
 # Project Brief: URL Shortener Service
@@ -133,7 +133,8 @@
 ### Authentication
 - JWT-based authentication
 - API key support
-- OAuth 2.0 (future)
+- Redis-backed rate limiting
+- Secure Redis connections with password authentication
 
 ### Authorization
 - Role-based access control (RBAC)
@@ -144,6 +145,7 @@
 - Encryption at rest
 - Encryption in transit (TLS 1.3)
 - Regular security audits
+- Proper date/time handling with UTC standardization
 
 ## 📊 Monitoring & Logging
 

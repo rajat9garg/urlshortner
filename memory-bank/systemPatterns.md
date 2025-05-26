@@ -140,6 +140,32 @@ sequenceDiagram
   - `CacheService`
   - `CacheManager`
 
+## 🧩 Design Patterns
+
+### Repository Pattern
+- **Implementation**: `UrlRepository` interface with `UrlRepositoryImpl` concrete class
+- **Benefits**: Abstraction of data access, testability, separation of concerns
+- **Key Methods**: `save()`, `findByShortCode()`, `incrementClickCount()`
+
+### Caching Pattern
+- **Implementation**: `UrlCacheService` with Redis backing store
+- **Strategy**: Cache-aside pattern with TTL expiration
+- **Configuration**: Explicit Redis authentication via `RedisConfig.kt`
+- **Benefits**: Reduced database load, improved response times
+
+### Data Transfer Objects (DTOs)
+- **Implementation**: OpenAPI-generated model classes
+- **Benefits**: Clean API contracts, validation, documentation
+- **Examples**: `CreateUrlRequest`, `UrlResponse`
+
+### Date/Time Handling
+- **Pattern**: UTC standardization with explicit timezone conversion
+- **Implementation**: 
+  - All internal dates stored as `LocalDateTime`
+  - API responses use `OffsetDateTime` with UTC timezone
+  - Explicit conversion in controllers using `OffsetDateTime.of(localDateTime, ZoneOffset.UTC)`
+- **Benefits**: Consistent date handling, timezone clarity, ISO-8601 compliance
+
 ## 🛡 Security Patterns
 
 ### 1. Rate Limiting
