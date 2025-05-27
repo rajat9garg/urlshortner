@@ -18,6 +18,8 @@ class UrlServiceImpl(
 ) : UrlService {
     override fun createShortUrl(originalUrl: String, customAlias: String?, expiresAt: LocalDateTime?): Urls {
         val shortCode = customAlias ?: generateShortCode(originalUrl)
+        checkForAlreadyExistingUrl(originalUrl)?.let { return it }
+
         val url = urlRepository.save(shortCode, originalUrl, expiresAt)
         urlCacheService.cacheShortCode(shortCode, originalUrl, ttlSeconds = expiresAt?.let { java.time.Duration.between(LocalDateTime.now(), it).seconds })
         return url
@@ -45,6 +47,10 @@ class UrlServiceImpl(
 
     override fun incrementClickCount(shortCode: String) {
         urlRepository.incrementClickCount(shortCode)
+    }
+
+    private fun checkForAlreadyExistingUrl(originalUrl: String): Urls? {
+        return urlRepository.findByOriginalUrl(originalUrl)
     }
 
     private fun generateShortCode(originalUrl: String): String {

@@ -8,4 +8,5 @@ interface UrlRepository {
     fun findByShortCode(shortCode: String): Urls?
     fun existsByShortCode(shortCode: String): Boolean
     fun incrementClickCount(shortCode: String): Int
+    fun findByOriginalUrl(originalUrl: String): Urls?
 }

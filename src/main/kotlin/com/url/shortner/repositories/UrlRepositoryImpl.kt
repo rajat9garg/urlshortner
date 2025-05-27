@@ -62,6 +62,14 @@ class UrlRepositoryImpl(private val dsl: DSLContext) : UrlRepository {
             .where(UrlsTable.URLS.SHORT_CODE.eq(shortCode))
             .execute()
     }
+
+    override fun findByOriginalUrl(originalUrl: String): Urls? {
+        return dsl.selectFrom(UrlsTable.URLS)
+            .where(UrlsTable.URLS.ORIGINAL_URL.eq(originalUrl))
+            .and(UrlsTable.URLS.IS_ACTIVE.eq(true))
+            .fetchOne()
+            ?.let { mapToModel(it) }
+    }
     
     private fun mapToModel(record: UrlsRecord): Urls {
         return Urls(

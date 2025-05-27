@@ -33,6 +33,38 @@ paths:
           description: Invalid input
         '409':
           description: Custom alias already exists
+  /{shortUrl}:
+    get:
+      summary: Redirect to long URL
+      description: Redirects to the original long URL using the short URL code.
+      operationId: redirectToLongUrl
+      tags:
+        - URLs
+      parameters:
+        - name: shortUrl
+          in: path
+          required: true
+          description: Short URL code
+          schema:
+            type: string
+      responses:
+        '302':
+          description: Redirects to the original long URL
+          headers:
+            Location:
+              description: The original long URL
+              schema:
+                type: string
+                format: uri
+              example: "https://www.example.com/very/long/url/that/needs/shortening"
+        '404':
+          description: Short URL not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: "Short URL not found"
 
 components:
   schemas:
@@ -71,3 +103,10 @@ components:
           format: date-time
           example: "2025-06-26T00:00:00Z"
           description: Expiration date and time for the shortened URL
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Short URL not found"
+          description: Error message describing the failure
