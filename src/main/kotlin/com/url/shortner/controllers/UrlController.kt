@@ -4,13 +4,11 @@ import com.url.shortener.generated.api.URLsApi
 import com.url.shortener.generated.model.CreateUrlRequest
 import com.url.shortener.generated.model.UrlResponse
 import com.url.shortner.services.RedirectService
-import com.url.shortener.generated.model.CreateUrlRequest as GeneratedCreateUrlRequest
-import com.url.shortener.generated.model.UrlResponse as GeneratedUrlResponse
+import com.url.shortner.services.UrlService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.server.ServerWebExchange
-import reactor.core.publisher.Mono
+
 import java.net.URI
 import java.time.OffsetDateTime
 import java.time.ZoneOffset

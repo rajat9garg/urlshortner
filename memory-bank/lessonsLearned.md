@@ -126,6 +126,14 @@
 - **Progressive enhancement** delivers value faster
 - **Technical debt** must be managed proactively
 
+## 2025-05-27: Lessons from Redirection & API Consistency
+- Cache-first, DB-fallback is critical for low-latency, high-QPS redirection.
+- Comprehensive unit/integration testing (including edge cases: expired, inactive, not found) is essential for reliability.
+- OpenAPI-first workflow ensures spec and implementation never diverge; all error and redirect cases are documented.
+- Handling duplicate long URLs prevents unnecessary DB bloat and improves user experience.
+- Refactoring for clarity (e.g., checking by original URL) simplifies business logic and reduces bugs.
+- Consistent endpoint versioning (`/api/v1/`) and error messaging improves maintainability and usability.
+
 ## 🛠 Tools That Helped
 
 ### Development

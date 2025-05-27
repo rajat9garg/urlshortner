@@ -200,3 +200,11 @@
 - [Project Vision](./projectVision.md)
 - [Tech Context](./techContext.md)
 - [System Patterns](./systemPatterns.md)
+
+## 📝 Change Log
+### 2025-05-27: Scope & Implementation – Redirection Complete
+- Implemented `/v1/{shortUrl}` endpoint for redirection, supporting cache-first and DB-fallback logic.
+- Enhanced duplicate original URL detection and handling in creation flow.
+- Updated OpenAPI spec for all documented endpoints (creation, redirection, health) and error cases.
+- Added comprehensive unit and integration tests for all critical flows.
+- All work aligns with non-functional requirements (performance, reliability, maintainability).

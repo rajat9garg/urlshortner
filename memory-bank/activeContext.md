@@ -126,6 +126,18 @@ None
 
 ## 🔄 Recent Changes
 
+### 2025-05-27: Detailed Update – Redirection Logic & Related Enhancements
+- Implemented full redirection flow (`GET /v1/{shortUrl}`):
+  - Controller delegates to service, which uses cache-first (Redis) and DB-fallback (Postgres).
+  - Handles expired and inactive URLs, and updates cache on DB hit.
+  - Returns HTTP 302 with Location header or 404 if not found/expired/inactive.
+- OpenAPI spec (`api.yaml`) updated for redirection endpoint, error schema, and examples.
+- Unit tests for RedirectService (cache hit, DB fallback, not-found, expired, inactive).
+- Integration tests for UrlController redirection endpoint (302/404 and Location header).
+- Enhanced duplicate long URL handling in create flow.
+- Refactored UrlService to check for existing URLs by original URL (not just short code).
+- All changes align with layered architecture and documentation-first approach.
+
 ### 2025-05-26
 - Completed Redis configuration
 - Improved date/time handling

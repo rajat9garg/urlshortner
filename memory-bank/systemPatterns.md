@@ -288,3 +288,10 @@ sequenceDiagram
 ---
 ### 2025-05-26
 - Redis integration is now explicitly configured for secure access. Date/time serialization is UTC-compliant throughout the stack. All API endpoints follow OpenAPI spec.
+
+### 2025-05-27: Pattern Validation & Architecture in Redirection
+- Layered architecture (Controller → Service → Repository/Cache) validated and refined in redirection flow.
+- Redis cache-aside pattern with TTL for optimal performance and consistency.
+- Refactored repository to support lookup by original URL, improving DRYness and correctness.
+- OpenAPI-driven development ensures implementation and documentation are always in sync.
+- All new endpoints and logic follow established patterns, making future scaling and maintenance easier.
